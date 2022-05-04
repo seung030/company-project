@@ -33,10 +33,7 @@ void ls_long(DIR *dp, struct dirent *oo){
 
 	stat(oo->d_name,&st);
 
-	int i;
-	for (i=0;i<9; i++){
-		if((st.st_mode >> (8-i)) & 0x1)
-			acc[1+i] = accstr[i%3];
+	
 	}
 
 	tmp = localtime( &st.st_mtime);
