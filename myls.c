@@ -51,6 +51,41 @@ void ls_long(DIR *dp, struct dirent *oo){
 	printf("\n");
 }
 
+void ls_inode(struct dirent *oo){
+	printf("%lu %s", oo->d_ino, oo->d_name);
+}
+
+void readfile(DIR *dd, struct dirent *oo){
+	dd = opendir(".");
+	while(oo=readdir(dd)){
+		if(ls_a==1){
+			if(ls_l==1){
+				ls_long(dd,oo);
+				}else{
+					if(ls_i==1){
+						inode(oo);
+					}else{
+						ls(oo);
+					}
+				}
+		}
+		else{
+			if (strcmp(oo->d_name, ".")!=0 && strcmp(oo->d_name,"..")!=0){
+				if(ls_l==1){
+					ls_long(dd,oo);
+				}else{
+					if(ls_i==1){
+						inode(oo);
+					}else{
+						ls(oo);
+					}
+				}
+			}
+		}
+	}
+	printf("\n");
+	closedir(dd);
+}
 
 int main(int argc, char **argv){
 	ls_a=0;
