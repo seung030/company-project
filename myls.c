@@ -41,14 +41,7 @@ void ls_long(DIR *dp, struct dirent *oo){
 
 	tmp = localtime( &st.st_mtime);
 
-	printf("%s", oo->d_name);
-	printf("%s", acc);
-	printf("%02d/%02d %02d:%02d ", tmp->tm_mon+1, tmp->tm_mday,tmp->tm_hour, tmp->tm_min);
-	printf("%lu",st.st_size);
-	if (ls_i==1){
-		printf("%lu", oo->d_ino);
-	}
-	printf("\n");
+	
 }
 
 
